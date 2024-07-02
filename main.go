@@ -199,7 +199,11 @@ func generateMarkdown(repoPath string, gitignorePatterns *ignore.GitIgnore) (str
 			if err != nil {
 				return err
 			}
-			contentBuilder.WriteString(fmt.Sprintf("文件名：/%s\n```%s\n%s\n```\n\n", relativePath, filepath.Ext(relativePath)[1:], string(content)))
+			if len(filepath.Ext(relativePath)) > 1 {
+				contentBuilder.WriteString(fmt.Sprintf("文件名：/%s\n```%s\n%s\n```\n\n", relativePath, filepath.Ext(relativePath)[1:], string(content)))
+			} else {
+				contentBuilder.WriteString(fmt.Sprintf("文件名：/%s\n```\n%s\n```\n\n", relativePath, string(content)))
+			}
 		}
 
 		return nil
