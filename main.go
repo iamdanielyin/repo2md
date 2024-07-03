@@ -200,9 +200,9 @@ func generateMarkdown(repoPath string, gitignorePatterns *ignore.GitIgnore) (str
 				return err
 			}
 			if len(filepath.Ext(relativePath)) > 1 {
-				contentBuilder.WriteString(fmt.Sprintf("File path: /%s\n```%s\n%s\n```\n\n", relativePath, filepath.Ext(relativePath)[1:], string(content)))
+				contentBuilder.WriteString(fmt.Sprintf("Filepath: /%s\n```%s\n%s\n```\n\n", relativePath, filepath.Ext(relativePath)[1:], string(content)))
 			} else {
-				contentBuilder.WriteString(fmt.Sprintf("File path: /%s\n```\n%s\n```\n\n", relativePath, string(content)))
+				contentBuilder.WriteString(fmt.Sprintf("Filepath: /%s\n```\n%s\n```\n\n", relativePath, string(content)))
 			}
 		}
 
